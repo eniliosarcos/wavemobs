@@ -43,6 +43,7 @@ public class BulletPool : MonoBehaviour
             {
                 bullets[i].transform.position = transform.position;
                 bullets[i].SetActive(true);
+                break;
             }
         }
     }

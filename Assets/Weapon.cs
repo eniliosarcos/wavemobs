@@ -8,6 +8,12 @@ public class Weapon : MonoBehaviour
 
     private float _timeRecoil;
     private float _inputTrigger;
+    private BulletPool _bulletpool;
+
+    void Awake()
+    {
+        _bulletpool = GetComponentInChildren<BulletPool>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -29,7 +35,7 @@ public class Weapon : MonoBehaviour
         }
         else if (_timeRecoil >= recoil && _inputTrigger == 1)
         {
-            print("shot!");
+            _bulletpool.CallBullet();
             _timeRecoil = 0.0f;
         }
         if (_timeRecoil >= recoil && _inputTrigger == 0 && _timeRecoil != recoil)
