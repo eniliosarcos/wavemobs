@@ -42,6 +42,7 @@ public class BulletPool : MonoBehaviour
             if (!bullets[i].activeInHierarchy)
             {
                 bullets[i].transform.position = transform.position;
+                bullets[i].transform.rotation = transform.rotation;
                 bullets[i].SetActive(true);
                 break;
             }
