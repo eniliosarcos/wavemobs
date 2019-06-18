@@ -11,6 +11,11 @@ public class CameraSmoothFollow : MonoBehaviour
     // LateUpdate is called after Update each frame
     void LateUpdate()
     {
+        FollowPlayer();
+    }
+
+    private void FollowPlayer()
+    {
         Vector3 _positionWithOffset = player.transform.position + offset;
         Vector3 _smoothPosition = Vector3.Lerp(transform.position, _positionWithOffset, smoothSpeed);
         transform.position = _smoothPosition;

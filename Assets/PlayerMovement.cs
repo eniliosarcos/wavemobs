@@ -6,27 +6,48 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speedMovement = 3.0f;
     public float speedRotation = 4.0f;
+
+    private Camera _mainCamera;
+    private Vector3 _inputDirection;
+    private Vector3 _inputMovement;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        _mainCamera = Camera.main;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        Vector3 targetdirection = new Vector3(Input.GetAxis("Horizontal right stick"), 0f, Input.GetAxis("Vertical right stick"));
-        if (targetdirection != Vector3.zero)
-        {
-            targetdirection = Camera.main.transform.TransformDirection(targetdirection);
-            targetdirection.y = 0.0f;
-            Quaternion targetrotation = Quaternion.LookRotation(targetdirection, Vector3.up * Time.deltaTime);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetrotation, speedRotation * Time.fixedDeltaTime);
-        }
+        InputRecognition();
+    }
 
-        Vector3 input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        input = Camera.main.transform.TransformDirection(input);
-        input.y = 0.0f;
-        transform.position += input*Time.deltaTime*speedMovement;
+    void LateUpdate()
+    {
+        Rotation();
+        Movement();
+    }
+
+    private void InputRecognition()
+    {
+        _inputDirection = new Vector3(Input.GetAxis("Horizontal right stick"), 0f, Input.GetAxis("Vertical right stick"));
+        _inputMovement = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+    }
+
+    private void Rotation()
+    {
+        if (_inputDirection != Vector3.zero)
+        {
+            _inputDirection = _mainCamera.transform.TransformDirection(_inputDirection);
+            _inputDirection.y = 0.0f;
+            Quaternion targetrotation = Quaternion.LookRotation(_inputDirection, Vector3.up * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetrotation, speedRotation * Time.deltaTime);
+        }
+    }
+
+    private void Movement()
+    {
+        _inputMovement = _mainCamera.transform.TransformDirection(_inputMovement);
+        _inputMovement.y = 0.0f;
+        transform.position += _inputMovement * Time.deltaTime * speedMovement;
     }
 }

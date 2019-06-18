@@ -5,30 +5,37 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     public float recoil;
-    float _timeRecoil;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
+    private float _timeRecoil;
+    private float _inputTrigger;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxisRaw("Shot") == 0 && _timeRecoil != recoil || Input.GetAxisRaw("Shot") == 1 && _timeRecoil <= recoil)
+        InputRecognition();
+        Shot();
+    }
+
+    private void InputRecognition()
+    {
+        _inputTrigger = Input.GetAxisRaw("Shot");
+    }
+
+    private void Shot()
+    {
+        if (_inputTrigger == 0 && _timeRecoil != recoil || _inputTrigger == 1 && _timeRecoil <= recoil)
         {
             _timeRecoil += Time.deltaTime;
         }
-        else if (_timeRecoil >= recoil && Input.GetAxisRaw("Shot") == 1)
+        else if (_timeRecoil >= recoil && _inputTrigger == 1)
         {
             print("shot!");
             _timeRecoil = 0.0f;
         }
-        if(_timeRecoil >= recoil && Input.GetAxisRaw("Shot") == 0 && _timeRecoil != recoil)
+        if (_timeRecoil >= recoil && _inputTrigger == 0 && _timeRecoil != recoil)
         {
             print("ready to shot!");
             _timeRecoil = recoil;
         }
-
     }
 }
