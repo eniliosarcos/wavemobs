@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class CameraSmoothFollow : MonoBehaviour
 {
-    public Transform player;       //Public variable to store a reference to the player game object
+    public Transform player;
     public float smoothSpeed = 0.05f;
-    public Vector3 offset;         //Private variable to store the offset distance between the player and camera
+    public Vector3 offset;
 
-    // LateUpdate is called after Update each frame
     void LateUpdate()
     {
         FollowPlayer();

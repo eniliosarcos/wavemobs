@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private Camera _mainCamera;
     private Vector3 _inputDirection;
     private Vector3 _inputMovement;
-    // Start is called before the first frame update
+
     void Awake()
     {
         _mainCamera = Camera.main;
