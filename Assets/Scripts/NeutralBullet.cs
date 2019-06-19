@@ -25,4 +25,13 @@ public class NeutralBullet : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Enemy")
+        {
+            StopAllCoroutines();
+            gameObject.SetActive(false);
+        }
+    }
+
 }
