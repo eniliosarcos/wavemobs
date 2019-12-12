@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb33b0433b56a44fab688b4a1ef0a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rootName: Pool_Player
+  rootName: Pool_player_bullets
   bulletsAmount: 18
   prefabBullet: {fileID: 4974636941483341953, guid: 241536d5fd3ac3b48bb58a0f01acafc1,
     type: 3}

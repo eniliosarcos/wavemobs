@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyMovement : MonoBehaviour
+public class chavistaMovement : MonoBehaviour
 {
     private NavMeshAgent _agent;
     private Transform _target;
@@ -11,6 +11,10 @@ public class EnemyMovement : MonoBehaviour
     void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
+    }
+
+    void Start()
+    {
         _target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 

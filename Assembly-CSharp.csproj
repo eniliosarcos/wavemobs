@@ -65,10 +65,11 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\BulletPool.cs" />
     <Compile Include="Assets\Scripts\CameraSmoothFollow.cs" />
-    <Compile Include="Assets\Scripts\EnemyMovement.cs" />
     <Compile Include="Assets\Scripts\NeutralBullet.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Weapon.cs" />
+    <Compile Include="Assets\Scripts\chavistaMovement.cs" />
+    <Compile Include="Assets\Scripts\spawnerChavistaController.cs" />
     <None Include="Assets\Shaders\Silhouetted Diffuse.shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/EJSP/Desktop/My Works/Unity/wavemobs/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
